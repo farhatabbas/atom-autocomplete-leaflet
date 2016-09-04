@@ -1,0 +1,19 @@
+{
+  "name": "atom-autocomplete-leaflet",
+  "version": "0.0.0",
+  "description": "Atom autocompletion plugin for Leaflet",
+  "keywords": [
+    "atom",
+    "leaflet"
+  ],
+  "activationCommands": {
+    "leaflet": "toggle"
+  },
+  "repository": "https://github.com/farhatabbas/atom-autocomplete-leaflet",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+  }
+}

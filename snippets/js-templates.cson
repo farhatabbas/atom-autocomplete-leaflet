@@ -1,0 +1,173 @@
+'.source.js':
+
+  'Leaflet Snippet to add map':
+    prefix: 'leaflet-map'
+    body: """
+      // initialize the map on the "map" div with a given center and zoom
+      var map = L.map('map', {
+          center: [51.505, -0.09],
+          zoom: 6
+      });
+
+    """
+
+  'Leaflet Snippet to add osm layer':
+    prefix: 'leaflet-layer-osm'
+    body: """
+      // initialize osm layer
+      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+      
+    """
+
+  'Leaflet Snippet to add mapbox layer':
+    prefix: 'leaflet-layer-mapbox'
+    body: """
+      // initialize mapbox layer
+      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+          attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+          maxZoom: 18,
+          id: '$1your.mapbox.project.id',
+          accessToken: '$2your.mapbox.public.access.token'
+      }).addTo(map);
+
+    """
+
+  'Leaflet Snippet to add marker':
+    prefix: 'leaflet-marker'
+    body: """
+      // add a marker with a given position
+      var marker = L.marker([51.505, -0.09]).addTo(map);
+
+    """
+
+  'Leaflet Snippet to add marker with popup':
+    prefix: 'leaflet-marker-popup'
+    body: """
+      // add a marker with a given position
+      var marker = L.marker([51.505, -0.09]).addTo(map);
+
+      //bind popup
+      marker.bindPopup('Hello World!').addTo(map);
+
+    """
+
+
+  'Leaflet Snippet to add custom marker with popup':
+    prefix: 'leaflet-custom-marker'
+    body: """
+      var firefoxIcon = L.icon({
+        iconUrl: 'http://joshuafrazier.info/images/firefox.svg',
+        iconSize: [38, 95], // size of the icon
+        });
+
+      L.marker([51.505, -0.09], {icon: firefoxIcon}).bindPopup('Hello World!').addTo(map);
+
+    """
+
+  'Leaflet Snippet to add circle':
+    prefix: 'leaflet-circle'
+    body: """
+      //adding a circle
+      var circle = L.circle([51.508, -0.11], 500, {
+          color: 'red',
+          fillColor: '#f03',
+          fillOpacity: 0.5
+      }).addTo(map);
+
+    """
+
+  'Leaflet Snippet to add rectangle':
+    prefix: 'leaflet-rectangle'
+    body: """
+      //adding a rectangle
+      var rectangle = L.rectangle([
+          [43.64701, -79.39425],
+          [43.64533, -79.38235]
+      ],{color:'red',opacity:1}).addTo(map);
+
+    """
+
+  'Leaflet Snippet to add polygon':
+    prefix: 'leaflet-polygon'
+    body: """
+      //L.rectangle(bounds, {color: "red", weight: 1}).addTo(map);
+
+      //adding a polygon
+      var polygon = L.polygon([
+          [51.509, -0.08],
+          [51.503, -0.06],
+          [51.51, -0.047]
+      ],{color:'green',opacity:1}).addTo(map);
+
+    """
+
+  'Leaflet Snippet to add polyline':
+    prefix: 'leaflet-polyline'
+    body: """
+      // adding a polyline
+      var polyline = L.polyline([
+          [43.64566, -79.38039],
+          [43.6453, -79.38219],
+          [43.64533, -79.38235],
+          [43.64477, -79.38499],
+          [43.64864, -79.38658],
+          [43.64701, -79.39426]
+        ],{color:'blue',opacity:1}).addTo(map);
+
+    """
+
+
+  'Leaflet Snippet to add geojson':
+    prefix: 'leaflet-geojson'
+    body: """
+      //creating geojson object
+      var data = {
+          "type": "FeatureCollection",
+          "features": [
+              {
+                  "type": "Feature",
+                  "geometry": {
+                      "type": "Point",
+                      "coordinates": [51.5, -0.09]
+                  },
+                  "properties": {
+                      "name": "Marker-01"
+                  }
+              }, {
+                  "type": "Feature",
+                  "geometry": {
+                      "type": "Point",
+                      "coordinates": [51.5, -0.06]
+                  },
+                  "properties": {
+                      "name": "Marker-02"
+                  }
+              }, {
+                  "type": "Feature",
+                  "geometry": {
+                      "type": "Polygon",
+                      "coordinates": [
+                          [
+                            [51.509, -0.08],
+                            [51.503, -0.06],
+                            [51.51, -0.047]
+                          ]
+                      ]
+                  },
+                  "properties": {
+                      "name": "Polygon-01"
+                  }
+              }
+          ]
+      };
+
+      //adding a geojson layer
+      L.geoJson(data, {
+          onEachFeature: function(feature, layer) {
+              layer.bindPopup(feature.properties.name);
+          }
+      }).addTo(map);
+
+    """
