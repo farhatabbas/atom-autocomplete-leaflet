@@ -1,7 +1,8 @@
 '.text.html, .text.css, .source.js':
   'editor':
     'completions': [
-      'html-leaflet-'
+      'html-leaflet-basic'
+      'html-leaflet-bootstrap'
       'leaflet-map',
       'leaflet-layer-osm',
       'leaflet-layer-mapbox',
